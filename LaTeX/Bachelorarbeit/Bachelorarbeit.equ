@@ -1,0 +1,39 @@
+\contentsline {equations}{\numberline {\small 1\normalsize }Formel \ref {eq:transformationsmatrix} Transformationsmatrix}{8}{equation.4.0.1}% 
+\contentsline {equations}{\numberline {\small 2\normalsize }Formel \ref {eq:aktive_gelenkvariablen} Aktive Gelenkvariablen}{9}{equation.4.0.2}% 
+\contentsline {equations}{\numberline {\small 3\normalsize }Formel \ref {eq:tcp} Vektor TCP}{9}{equation.4.0.3}% 
+\contentsline {equations}{\numberline {\small 4\normalsize }Formel \ref {eq:gr\IeC {\"u}bler_allgemein} Gr\IeC {\"u}bler-Formel (allgemein)}{11}{equation.5.2.4}% 
+\contentsline {equations}{\numberline {\small 5\normalsize }Formel \ref {eq:gr\IeC {\"u}bler} Gr\IeC {\"u}bler-Formel (gel\IeC {\"o}st)}{11}{equation.5.2.5}% 
+\contentsline {equations}{\numberline {\small 6\normalsize }Formel \ref {eq:F1} Koordinaten des Punktes $F_1$}{13}{equation.5.3.6}% 
+\contentsline {equations}{\numberline {\small 7\normalsize }Formel \ref {eq:J1} Koordinaten des Punktes $J_1$}{13}{equation.5.3.7}% 
+\contentsline {equations}{\numberline {\small 8\normalsize }Formel \ref {eq:E1} Koordinaten des Punktes $E_1$}{13}{equation.5.3.8}% 
+\contentsline {equations}{\numberline {\small 9\normalsize }Formel \ref {eq:u} Die L\IeC {\"a}nge $u$, respektive der Abstand zwischen $E_1$ und $E_1'$}{13}{equation.5.3.9}% 
+\contentsline {equations}{\numberline {\small 10\normalsize }Formel \ref {eq:E1'} Koordinaten des Punktes $E_1'$}{13}{equation.5.3.10}% 
+\contentsline {equations}{\numberline {\small 11\normalsize }Formel \ref {eq:v} Die L\IeC {\"a}nge $v$, respektive der z-Abstand zwischen $E_1'$ und $J_1$}{14}{equation.5.3.11}% 
+\contentsline {equations}{\numberline {\small 12\normalsize }Formel \ref {eq:kreisgleichung_allgemein} Kreisgleichung}{15}{equation.5.3.12}% 
+\contentsline {equations}{\numberline {\small 13\normalsize }Formel \ref {eq:kreisgleichung_K} Kreisgleichung des Kreises $K$}{15}{equation.5.3.13}% 
+\contentsline {equations}{\numberline {\small 14\normalsize }Formel \ref {eq:kreisgleichung_k} Kreisgleichung des Kreises $k$}{15}{equation.5.3.14}% 
+\contentsline {equations}{\numberline {\small 15\normalsize }Formel \ref {eq:J1-gleichungssystem} Gleichungssystems zur Ermittlung des Anbindungspunktes $J_1$}{15}{equation.5.3.15}% 
+\contentsline {equations}{\numberline {\small 16\normalsize }Formel \ref {eq:kreisgleichung_K-umgeformt} Umgeformte Kreisgleichung des Kreises $K$}{15}{equation.5.3.16}% 
+\contentsline {equations}{\numberline {\small 17\normalsize }Formel \ref {eq:zJ1} Umgeformte Kreisgleichung des Kreises $K$}{15}{equation.5.3.17}% 
+\contentsline {equations}{\numberline {\small 18\normalsize }Formel \ref {eq:ef} Helfervariablen}{15}{equation.5.3.18}% 
+\contentsline {equations}{\numberline {\small 19\normalsize }Formel \ref {eq:theta11} Winkel des ersten distalen Gliedes $\theta \textsubscript {11}$}{16}{equation.5.3.19}% 
+\contentsline {equations}{\numberline {\small 20\normalsize }Formel \ref {eq:F2} Koordinaten des Punktes $F_2$}{16}{equation.5.3.20}% 
+\contentsline {equations}{\numberline {\small 21\normalsize }Formel \ref {eq:F3} Koordinaten des Punktes $F_3$}{17}{equation.5.3.21}% 
+\contentsline {equations}{\numberline {\small 22\normalsize }Formel \ref {eq:jacobi} Jacobi-Matrix}{18}{equation.5.4.22}% 
+\contentsline {equations}{\numberline {\small 23\normalsize }Formel \ref {eq:schleifenschlussgleichung-partielle-ableitung} Partielle Ableitung der Schleifenschlussgleichung}{18}{equation.5.4.23}% 
+\contentsline {equations}{\numberline {\small 24\normalsize }Formel \ref {eq:schleifenschlussgleichung-partielle-ableitung-mit-v} Partielle Ableitung der Schleifenschlussgleichung mit Geschwindigkeit}{19}{equation.5.4.24}% 
+\contentsline {equations}{\numberline {\small 25\normalsize }Formel \ref {eq:bahngeschwindigkeit-allgemein} Bahngeschwindigkeit (allgemein)}{19}{equation.5.4.25}% 
+\contentsline {equations}{\numberline {\small 26\normalsize }Formel \ref {eq:bahngeschwindigkeit} Bahngeschwindigkeit}{19}{equation.5.4.26}% 
+\contentsline {equations}{\numberline {\small 27\normalsize }Formel \ref {eq:bahngeschwindigkeit-vektorprodukt} Bahngeschwindigkeit mit Vektorprodukt}{19}{equation.5.4.27}% 
+\contentsline {equations}{\numberline {\small 28\normalsize }Formel \ref {eq:skalarprodukt} Skalarprodukt}{19}{equation.5.4.28}% 
+\contentsline {equations}{\numberline {\small 29\normalsize }Formel \ref {eq:vektorprodukt} Vektorprodukt}{19}{equation.5.4.29}% 
+\contentsline {equations}{\numberline {\small 30\normalsize }Formel \ref {eq:J} $J$}{20}{equation.5.4.30}% 
+\contentsline {equations}{\numberline {\small 31\normalsize }Formel \ref {eq:omega_ai} $\omega \textsubscript {ai}$}{20}{equation.5.4.31}% 
+\contentsline {equations}{\numberline {\small 32\normalsize }Formel \ref {eq:kreuzprodukt} Kreuzprodukt}{20}{equation.5.4.32}% 
+\contentsline {equations}{\numberline {\small 33\normalsize }Formel \ref {eq:determinante} Determinante}{20}{equation.5.4.33}% 
+\contentsline {equations}{\numberline {\small 34\normalsize }Formel \ref {eq:spatprodukt} Spatprodukt}{20}{equation.5.4.34}% 
+\contentsline {equations}{\numberline {\small 35\normalsize }Formel \ref {eq:vektor-_und_spatprodukt_gleichgesetzt} Vektor- und Spatprodukt gleichgesetzt}{21}{equation.5.4.35}% 
+\contentsline {equations}{\numberline {\small 36\normalsize }Formel \ref {eq:jacobi-fertig} Jacobimatrix}{21}{equation.5.4.36}% 
+\contentsline {equations}{\numberline {\small 37\normalsize }Formel \ref {eq:jp} Jacobisubmatrix $J_p$}{21}{equation.5.4.37}% 
+\contentsline {equations}{\numberline {\small 38\normalsize }Formel \ref {eq:jtheta} Jacobisubmatrix $J_\theta $}{21}{equation.5.4.38}% 
+\contentsline {equations}{\numberline {\small 39\normalsize }Formel \ref {eq:jtheta-determinante} Determinante der Jacobisubmatrix $J_\theta $}{21}{equation.5.5.39}% 

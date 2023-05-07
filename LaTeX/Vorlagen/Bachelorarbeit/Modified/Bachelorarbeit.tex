@@ -1,0 +1,333 @@
+%
+% FH Technikum Wien
+% !TEX encoding = UTF-8 Unicode
+%
+
+\documentclass[Bachelor, BMR, ngerman]{twbook}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+% --------------------------------------------------
+% CITE
+% --------------------------------------------------
+\newcommand{\FHTWCitationType}{HARVARD} 
+\ifthenelse{\equal{\FHTWCitationType}{HARVARD}}{\usepackage{harvard}}{\usepackage{bibgerm}}
+
+
+% --------------------------------------------------
+% FORMAT CODE LISTINGS
+% --------------------------------------------------
+\usepackage[final]{listings}
+\lstset{captionpos=b, numberbychapter=false,caption=\lstname,frame=single, numbers=left, stepnumber=1, numbersep=2pt, xleftmargin=15pt, framexleftmargin=15pt, numberstyle=\tiny, tabsize=3, columns=fixed, basicstyle={\fontfamily{pcr}\selectfont\footnotesize}, keywordstyle=\bfseries, commentstyle={\color[gray]{0.33}\itshape}, stringstyle=\color[gray]{0.25}, breaklines, breakatwhitespace, breakautoindent}
+\lstloadlanguages{[ANSI]C, C++, [gnu]make, gnuplot, Matlab}
+\makeatletter
+\providecommand\listacroname{}
+\@ifclasswith{twbook}{english}
+{%
+    \renewcommand\lstlistingname{Code}
+    \renewcommand\lstlistlistingname{List of Code}
+    \renewcommand\listacroname{List of Abbreviations}
+}{%
+    \renewcommand\lstlistingname{Quellcode}
+    \renewcommand\lstlistlistingname{Quellcodeverzeichnis}
+    \renewcommand\listacroname{Abkürzungsverzeichnis}
+}
+\newcommand\listoflolentryname\lstlistingname
+\makeatother
+\newcommand{\listofcode}{\phantomsection\lstlistoflistings}
+
+
+% --------------------------------------------------
+%  AUXILARY PACKAGES
+% --------------------------------------------------
+\usepackage{blindtext}
+\usepackage{colortbl} % Für farbige Tabellen
+%\usepackage{media9}
+
+
+% --------------------------------------------------
+% TITLE & AUTHOR
+% --------------------------------------------------
+\title{Konstruktion eines Delta Roboters zur Untersuchung der inversen Kinematik }
+\author{Felix Schausberger}
+\studentnumber{mr16b049}
+%\author{Titel Vorname Name, Titel\and{}Titel Vorname Name, Titel}
+%\studentnumber{XXXXXXXXXXXXXXX\and{}XXXXXXXXXXXXXXX}
+\supervisor{Mohammed Aburaia, MSc}
+%\supervisor[Begutachter]{Titel Vorname Name, Titel}
+%\supervisor[Begutachterin]{Titel Vorname Name, Titel}
+%\secondsupervisor{Titel Vorname Name, Titel}
+%\secondsupervisor[Begutachter]{Titel Vorname Name, Titel}
+%\secondsupervisor[Begutachterinnen]{Titel Vorname Name, Titel}
+\place{Wien}
+
+
+% --------------------------------------------------
+% KURZFASSUNG, ABSTRACT & KEYWORDS
+% --------------------------------------------------
+\kurzfassung{
+    Projektziele: 
+    \begin{itemize}
+        \item Realisierung einer Deltakinematik.
+        \item Implementierung einer Pick-and-Place-Applikation mit vollst{\"a}ndiger Beschreibung der inversen Kinematik einer geschlossenen kinematischen Kette.
+        \item Modularer Aufbau, alle Verbindungen werden gesteckt oder geschraubt.
+        \item Einhausung des Roboters mit 20 [mm] Aluprofilrahmen.
+        \item Die aktiven Gelenke des Roboters werden mit Hebi X5-1 Motoren realisiert.
+        \item Die passiven Gelenke des Roboters werden mit Doppelgelenklager realisiert.
+    \end{itemize}
+    Das Ziel der Arbeit ist eine vollständige Beschreibung der inversen Kinematik eines Delta Roboters um bei Studierenden die Lehrinhalte aus der Lehrveranstaltung AURO zu festigen und praktisch anzuwenden. 
+    Lernziele der Studierenden: Freiheitsgrade, TCP, Lage der Antriebe, zeichnen kinematischer Ketten, Pose, festlegen von Koordinatensystemen mit DH-Notation, berechnen der inverse Kinematik einer geschlossenen kinematischen Kette mit Anwendung von Rotations- und Transformationsmatrizen sowie der Jacobi Matrix.
+    }
+\schlagworte{Parallelkinematik, geschlossene kinematische Kette, inverse Kinematik, Delta Roboter, smart engines}
+% \outline{\blindtext}
+% \keywords{Keyword1, Keyword2, Keyword3, Keyword4}
+%\acknowledgements{\blindtext}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                 BEGIN DOCUMENT                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%Festlegungen für den HARVARD-Zitierstandard
+\ifthenelse{\equal{\FHTWCitationType}{HARVARD}}{
+\bibliographystyle{Harvard_FHTW_MR}%Zitierstandard FH Technikum Wien, Studiengang Mechatronik/Robotik, Version 1.2e
+\citationstyle{dcu}%Correct citation-style (Harvardand, ";" between citations, "," between author and year)
+\citationmode{abbr}%use "et al." with first citation
+\iflanguage{ngerman}{
+    %Deutsch Neue Rechtschreibung
+    \newcommand{\citepic}[1]{(Quelle: \protect\cite{#1})}%Zitat: Bild
+    \newcommand{\citefig}[2]{(Quelle: \protect\cite{#1}, S. #2)}%Zitat: Bild aus Dokument
+    \newcommand{\citefigm}[2]{(Quelle: modifiziert "ubernommen aus \protect\cite{#1}, S. #2)}%Zitat: modifiziertes Bild aus Dokument
+    \newcommand{\citep}{\citeasnoun}%In-Line Zitiat entweder mit \citep{} oder \citeasnoun{}
+    \newcommand{\acessedthrough}{Verfügbar unter:}%Für URL-Angabe
+    \newcommand{\acessedthroughp}{Verfügbar bei:}%Für URL-Angabe (Geschützte Datenbank, Zugriff durch FH)
+    \newcommand{\acessedat}{Zugang am}%Für URL-Datum-Angabe
+    \newcommand{\singlepage}{S.}%Für Seitenangabe (einzelne Seite)
+    \newcommand{\multiplepages}{S.}%Für Seitenangabe (mehrere Seiten)
+    \newcommand{\chapternr}{K.}%Für Kapitelangabe
+    \renewcommand{\harvardand}{\&}%Harvardand in Zitaten
+    \newcommand{\abstractonly}{ausschließlich Abstract}
+    \newcommand{\edition}{. Auflage}%Angabe der Auflage
+}{
+\iflanguage{german}{
+    %Deutsch
+    \newcommand{\citepic}[1]{(Quelle: \protect\cite{#1})}%Zitat: Bild
+    \newcommand{\citefig}[2]{(Quelle: \protect\cite{#1}, S. #2)}%Zitat: Bild aus Dokument
+    \newcommand{\citefigm}[2]{(Quelle: modifiziert "ubernommen aus \protect\cite{#1}, S. #2)}%Zitat: modifiziertes Bild aus Dokument
+    \newcommand{\citep}{\citeasnoun}%In-Line Zitiat entweder mit \citep{} oder \citeasnoun{}
+    \newcommand{\acessedthrough}{Verfügbar unter:}%Für URL-Angabe
+    \newcommand{\acessedthroughp}{Verfügbar bei:}%Für URL-Angabe (Geschützte Datenbank, Zugriff durch FH)
+    \newcommand{\acessedat}{Zugang am}%Für URL-Datum-Angabe
+    \newcommand{\singlepage}{S.}%Für Seitenangabe (einzelne Seite)
+    \newcommand{\multiplepages}{S.}%Für Seitenangabe (mehrere Seiten)
+    \newcommand{\chapternr}{K.}%Für Kapitelangabe
+    \renewcommand{\harvardand}{\&}%Harvardand in Zitaten
+    \newcommand{\abstractonly}{ausschließlich Abstract}
+    \newcommand{\edition}{. Auflage}%Angabe der Auflage
+}{
+    %Englisch
+    \newcommand{\citepic}[1]{(Source: \protect\cite{#1})}%Zitat: Bild
+    \newcommand{\citefig}[2]{(Source: \protect\cite{#1}, p. #2)}%Zitat: Bild aus Dokument
+    \newcommand{\citefigm}[2]{(Source: taken with modification from \protect\cite{#1}, p. #2)}%Zitat: modifiziertes Bild aus Dokument
+    \newcommand{\citep}{\citeasnoun}%In-Line Zitiat entweder mit \citep{} oder \citeasnoun{}
+    \newcommand{\acessedthrough}{Available at:}%Für URL-Angabe
+    \newcommand{\acessedthroughp}{Available through:}%Für URL-Angabe (Geschützte Datenbank, Zugriff durch FH)
+    \newcommand{\acessedat}{Accessed}%Für URL-Datum-Angabe
+    \newcommand{\singlepage}{p.}%Für Seitenangabe (einzelne Seite)
+    \newcommand{\multiplepages}{pp.}%Für Seitenangabe (mehrere Seiten)
+    \newcommand{\chapternr}{Ch.}%Für Kapitelangabe
+    \renewcommand{\harvardand}{\&}%Harvardand in Zitaten
+    \newcommand{\abstractonly}{Abstract only}
+    \newcommand{\edition}{~edition}%Edition -> note, that you have to write "edition = {2nd},"!
+}}}
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  MAIN BODY                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Einleitung/Einführung in die Thematik}
+
+    Robotik und Automatisierung revolutionieren zusammen mit Smart Manufacturing gegenwärtig nahezu die gesamte moderne Fertigungsindustrie. \cite{FrDe18,TaQi19} Die erschlossenen Technologien stellen in vielen Bereichen, darunter der automatisierten Fertigung, der Medizin und dem Gesundheitswesen, der Altenpflege und Rehabilitation, der unbemannten Suche und Rettung sowie der Automobilindustrie bereits etablierte Systeme dar. \cite{Eg14,SaDa18} Schon mit derzeitigen Verfahrensweisen sind Roboter in der Lage, zahlreiche Aufgaben effizienter und konsistenter zu erledigen als konventionelle Fertigungsprozesse mit menschlicher Belegschaft. \cite{FrDe18}\\
+    \\
+    Smart Manufacturing erfordert die Interaktion, Integration und Fusion physischer und informatischer, softwaretechnischer Komponenten. Dies wird einerseits durch die rasante Weiterentwicklung innovativer Technologien, wie dem Internet der Dinge (IoT), Cloud Computing, Big Data und deren Analysen, cyber-physischer Systeme sowie mobilen Internet und andererseits durch nationale fortschrittliche Fertigungsstrategien mit dem Ziel einer automatisierten Industrie, wie Industrial Internet, Industrie 4.0 und Made in China 2025, unterstützt. \cite{TaQi19}\\
+    \\
+    Aktuelle Trendkonzepte verfolgen das gemeinsame Ziel einer "Smart Factory", in der cyber-physische Systeme die physischen Prozesse der Fabrik überwachen und dezentrale Entscheidungen treffen. Im Zuge dessen gewinnen "smarte" Antriebe mit kontinuierlicher Überwachung des eigenen Zustands, Kommunikation untereinander mit Edge-Computing und dem Übertragen von Nutzdaten und relevanten Informationen in eine Cloud immer mehr an Bedeutung.\\
+    \\
+    Dieses Zusammenspiel ermöglicht, Fehler frühzeitig vorherzusagen, Korrekturmaßnahmen zu ergreifen und somit rechtzeitig Ausrüstungs- und Prozessausfälle in der Industrie zu vermeiden. Obwohl Elektromotoren den Großteil der Antriebsmaschinen in dynamischen Systemen der modernen Industrie darstellen, halten diese noch meist ungenutzes Potential als smarte Antriebe ausgeführt zu werden um Produktivitäts- und Wirkungsgraddaten zu generieren. \cite{DoBh18}
+
+\chapter{Stand der Technik}
+    
+    Die meisten der derzeit eingesetzten Industrieroboter sind aus seriellen oder parallelen kinematischen Mechanismen aufgebaut \cite{SiKh16}. Im Allgemeinen besteht eine räumliche mechanische Struktur aus starren Körpern, sogenannten Gliedern, welche über Gelenke miteinander verbunden werden, um eine Relativbewegung zwischen benachbarten Gliedern zu ermöglichen \cite{LyPa17}.\\
+    \\
+    Ein Robotermechanismus mit serieller, offener kinematischen Kette besteht aus einer Reihe aktiver Gelenke, welche die Basis mit dem Endeffektor verbindet. Alle Bewegungsachsen des Systems sind nacheinander angeordnet und jede zusätzliche Achse ergänzt den Mechanismus um einen weiteren Freiheitsgrad.  Dadurch wird jedoch auch jeder Antrieb wird mit den Massen der nachfolgenden Glieder und Antriebe belastet \cite{Ne06}.\\
+    \\
+    Dementgegen wird bei einer parallelen, geschlossenen kinematischen Kette nur eine Teilmenge der Gelenke aktiv betätigt \cite{LyPa17}.\\ 
+    \\
+    Diese parallelen Strukturen haben keine im geometrischen Sinne parallelen Baugruppen \cite{Ne06}, die Terminologie bezieht sich auf die in die Struktur integrierten Parallelogramme. Der Einsatz dreier Parallelogramme ermöglicht die Pose\footnote{Respektive die Position und Orientierung.} der beweglichen Plattform auf drei rein translatorische Freiheitsgrade (DoF) zu beschränken. Parallelroboter verfügen im Allgemeinen über eine höhergelegene, invariante Basis welche fix mit dem Referenzrahmen verbunden ist, sowie eine tiefer gelegene, bewegliche Plattform mit angebrachtem Endeffektor. Dieser ist über mindestens zwei unabhängige kinematische Ketten mit der festen Basis verbunden und somit in der Lage mit \textit{n} Freiheitsgraden arbiträre Bewegungen im Arbeitsraum durchzuführen \cite{SiKh16,StCa03}. Hierbei werden konventionell die passiven Gelenke des Roboters mit Kugel-, Dreh- oder Prismengelenken ausgeführt. Für die aktiven Gelenke des Roboters werden meist Rotations- oder Lineargelenke eingesetzt \cite{StCa03}.\\
+    \\
+    Die gängiste Konstruktionsvariante paraller Strukturen und der mit Abstand erfolgreichste Parallelroboter für industrielle Anwendungen ist der sogenannte Delta Roboter \cite{CrLe17,SoVa18}.\\
+    \\
+    -> VOTEILE PARALLELROBOTER
+
+\chapter{Optional: Educational Robotics}
+
+    Obwohl sich die heutige, schnelllebige Welt und ihre Wirtschaftssysteme rasant verändern, hat die öffentliche Bildung seit ihrer Einführung nahezu dasselbe System beibehalten. Durch den stetig wachsenden Einfluss technologiebezogener Branchen ist der Erwerb technologischer Kompetenzen durch die Integration von Ingenieurwissenschaften in den Lehrplan ein Schlüsselelement für den Erfolg der nächsten Studentengeneration. \cite{Eg14}\\
+    \\
+    Aktuellen Bildungslehrplänen für Studenten mangelt es oft an Möglichkeiten, um erforderliche Fähigkeiten zu erwerben. (IFR18) Trotz weltweiter Bestrebungen von Bildungsreformen versucht ein Großteil des derzeitigen Lehrsystems weiterhin, Auszubildende auf die Zukunft vorzubereiten, indem Methoden der Vergangenheit angewandt werden. \cite{Eg14}\\
+    \\
+    Um Qualifikationslücke zu schließen stellt die Bildungsrobotik in Verbindung von Theorien des Konstruktivismus und des Konstruktionismus wertvolle Prinzipien, Methoden und Prozesse zur Verfügung um technologische Kompetenzen und Fähigkeiten wie logisches, abstraktes und algorithmisches \cite{Eg16} Denken, analysieren und handeln zu erwerben. \cite{ToLa16}\\
+    \\
+    Schnelle Anpassbarkeit an spezifische Aufgabenstellungen durch die wiederverwendbrkeit von Hardware- und Software-Modulen erlaubt Robotersysteme skalierbarer Komplexität.\\
+    Selbst gebaute Roboter sind deshalb so ideal, weil dort das Wissen aus Mechanik, Elektrotechnik und Informatik zu einem System integriert wird und man sofort sieht, ob es funktioniert. Anschaulicher können die Aufgaben eines Ingenieurs nicht vermittelt werden.\\
+    Interdisziplinäres Gebiet: Programmierung, Geometrie, Robotik, Ingenieurwesen, Design.
+
+\chapter{Ausgangssituation/Problem- und Aufgabenstellung/Ziele}
+\chapter{Systematische Vorgehensweise}
+\chapter{Entwicklung und Evaluierung der Konzepte}
+\chapter{Modellierung des Systems}
+\section{Auslegung der Hardware}
+
+    Abb. 1 zeigt den Prototyp der geschlossenen kinematischen Kette des Delta Roboters mit drei translatorischen Freiheitsgraden. Diese basieren auf drei identischen, parallelverketteten Strukturen zwischen der oberen invarianten Basis und unteren beweglichen Plattform. Die topologische Struktur einer dieser Ketten besteht aus einem auf der Basis (1) montierten Antrieb mit aktivem Drehgelenk (2), einem parallelen Zwischenmechanismus (3) und einer abschließenden passiv drehbaren Verbindung (4), welche mit der beweglichen Plattform (5) verbunden ist. Die aktiven Drehgelenke des Roboters sind über an der Basis montierte Hebi X5-1 Antriebe ausgeführt. Der parallele Zwischenmechanismus besteht aus einem proximalen und distalen Glied. Die proximale Verbindung wird über ein Aluminiumrohr und die distale Komponente über ein Doppelgelenklager realisiert.\\
+    \\
+    Die Parameter des Delta-Roboters sollen sich an in der Industrie eingesetzten Robotern orientieren. Um folglich eine angemessene Auswahl treffen zu können sind in Tabelle \ref{tab1} die Dimensionen dreier in der Industrie etablierter Delta-Roboter gegenübergestellt.
+
+    \begin{table}[!htbp]
+        \centering
+        \caption{Dimensionen etalblierter Delta-Roboter \citefigm{SoVa18}{146}}\label{tab1}
+            \begin{tabular}{| l | c | c | c |}\hline \rowcolor[gray]{0.8}
+                Beschreibung & Proximal Glied [mm] & Distal Glied [mm]  & Proportion\\\hline
+                Adept Quattro s650H & 373 & 825 & 2,21\\\hline
+                ABB FlexPicker IRB 360-1/1600 & 524 & 1244 & 2,37\\\hline
+                FANUC M-1iA/0.5S &  100 & 270 & 2,7\\\hline
+            \end{tabular}
+    \end{table}
+    
+     \begin{table}[!htbp]
+        \centering
+        \caption{Stückliste: Lagernde Teile}\label{tab2}
+            
+            \begin{tabular}{| l | c |}\hline \rowcolor[gray]{0.8}
+                Beschreibung & Verfügbarkeit\\\hline
+                
+                Hebi X5-1 Motoren & 3/3\\\hline
+                Gewindestange M5 600[mm] & 1/1\\\hline
+                Aluprofile & 12/12\\\hline
+                Aluwinkel & 16/16\\\hline
+                Aluwinkelshrauben & 32/32\\\hline
+                Nutmuttern 6 M4 & 32/32\\\hline
+                M5 x 10 Zylinderkopfschrauben & 36/36\\\hline
+                M5 x 16 Zylinderkopfschrauben & 36/36\\\hline
+                M4 x 16 Zylinderkopfschrauben & 9/9\\\hline
+                M3 x 10 Zylinderkopfschrauben & 3/3\\\hline
+                M5 Muttern & 72/72\\\hline
+                M5 Hutmuttern & 12/12\\\hline
+                M3 Muttern & 3/3\\\hline
+                \end{tabular}
+    \end{table}
+    
+    \begin{table}[!htbp]
+        \centering
+        \caption{Stückliste: Selbst konstruierte Teile SLS}\label{tab3}
+            \begin{tabular}{| l | c |}\hline \rowcolor[gray]{0.8}
+                Beschreibung & Verfügbarkeit\\\hline
+                
+                Verbindungszapfen & 6/6\\\hline
+                Drehgelenksverbindung & 3/3\\\hline
+                Flansch & 1/1\\\hline
+                Kalibrierungspin & 1/1\\\hline
+                Gelenksgegenstück & 3/6\\\hline
+                Basisverbindung & 0/3\\\hline
+                Basisverbindunggegenstück & 0/3\\\hline
+                Basishalterung & 0/3\\\hline
+            \end{tabular}
+    \end{table}
+    
+    \begin{table}[!htbp]
+        \centering
+        \caption{Stückliste: Zu bestellende Teile}\label{tab4}
+            \begin{tabular}{| l | c |}\hline\rowcolor[gray]{0.8}
+                Beschreibung & Verfügbarkeit\\\hline
+                
+                Doppelgelenklager & 0/6\\\hline
+                Aluminiumrohr 100[mm] & 0/3\\\hline
+                Aluminiumrohr 137.5[mm] & 0/3\\\hline
+                Netzteil & 0/1\\\hline
+            \end{tabular}
+    \end{table}
+
+\section{Entwicklung der Software}
+\chapter{Konzeptrealisierung}
+    
+%     \includemedia[
+%      width=0.8\linewidth,height=0.8\linewidth,
+%   activate=pageopen,
+%   add3Djscript=asylabels.js,
+%   add3Djscript=3Dspintool.js,
+%   3Dmenu,
+%   3Dc2c=1 1 0.2, %object-to-camera vector
+%   %settings below found by right-click-->Generate Default View
+%   3Dcoo=-1.2360605001449585 -2.1437549591064453 -345.6598815917969,
+%   3Droo=377.89275461201964,
+%   3Dlights=Headlamp,
+%   ]{\includegraphics{delta.PDF}}{delta.prc}
+
+\chapter{Systemtests}
+\chapter{Ergebnisse}
+\chapter{Evaluierung und Diskussion}
+\chapter{Zusammenfassung und Ausblick}
+
+% --------------------------------------------------
+% BIBLIOGRAPHY
+% --------------------------------------------------
+\clearpage
+\ifthenelse{\equal{\FHTWCitationType}{HARVARD}}{}{\bibliographystyle{gerabbrv}}
+\bibliography{References}
+\clearpage
+
+
+% --------------------------------------------------
+% GLOSSARIES
+% --------------------------------------------------
+% Das Abbildungsverzeichnis
+% \listoffigures
+% \clearpage
+
+% Das Tabellenverzeichnis
+\listoftables
+\clearpage
+
+% Das Quellcodeverzeichnis
+% \listofcode
+% \clearpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\listacroname}
+\chapter*{\listacroname}
+\begin{acronym}[XXXXX]
+    \acro{DoF}[DoF]{Degree of freedom/Freiheitsgrad}
+    \acro{IoT}[IoT]{Internet of things/Internet der Dinge}
+    
+\end{acronym}
+
+% --------------------------------------------------
+% APPENDIX
+% --------------------------------------------------
+% \clearpage
+% \appendix
+% \chapter{Anhang A}
+% \clearpage
+% \chapter{Anhang B}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                     FIN                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

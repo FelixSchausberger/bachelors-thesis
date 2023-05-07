@@ -1,0 +1,190 @@
+
+% --------------------------------------------------
+% filename: delta-closed-loop.tikz
+% caption:  Geschlossene Schleife einer kinematischen Kette des Delta Roboters
+% label:    fig:delta-closed-loop
+% date:     10.04.2019
+% --------------------------------------------------
+
+\begin{tikzpicture}[cross/.style={path picture={ 
+        \draw
+        (path picture bounding box.south east) -- (path picture bounding box.north west) (path picture bounding box.south west) -- (path picture bounding box.north east);}}
+    ]
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % FRONT VIEW
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DEFINE STYLES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \tikzstyle{joint} = [circle, scale=0.8, fill=black, draw, thick]
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % COORDINATE SYSTEM (ORIGIN)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node (x_o) [label={[green, shift={(0, 0)}]$x_o$}] at (1.2, 0) {};
+    \node (z_o) [label={[red, shift={(-0.25, -0.5)}]$z_o$}] at (0, -1.2) {};
+    
+    \node (y_o) [label={[blue, shift={(-0.25, 0)}]$y_o$}, draw, blue, fill=blue, circle, thick] at (0, 0) {};
+    
+    \draw [->, green, ultra thick] (y_o) to (x_o);
+    \draw [->, red, ultra thick] (y_o) to (z_o);
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % COORDINATE SYSTEM (ROTARY JOINT)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node (x_i) [label={[green, shift={(0, 0)}]$x_i$}] at (4.2, 0) {};
+    \node (z_i) [label={[red, shift={(-0.25, -0.5)}]$z_i$}] at (3, -1.2) {};
+    
+    \node (revolute-joint) [label={[label distance=0.2]60:$F_i$}] at (3, 0) {};
+    
+    \draw [->, green, ultra thick] (revolute-joint) to (x_i);
+    \draw [->, red, ultra thick] (revolute-joint) to (z_i);
+    
+    \draw [thick] (y_o) -- (revolute-joint) 
+        node [midway, label={[label distance=0.2]60:$R$}] {};
+    
+    \node (y_i) [label={[blue, shift={(-0.25, 0)}]$y_i$}, draw, blue, fill=blue, circle, thick] at (3, 0) {};
+    \node [joint] at (3, 0) {};
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DEFINE NODES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node (origin) [label={[label distance=0.2]-45:$O$}, joint] at (0, 0) {};
+    
+    \node (upper-spherical-bearing) [label={[label distance=1]180:$J_i$}, joint] at (4.5, -2) {};
+    \node (lower-spherical-bearing) [label={[label distance=0.2]-90:$E_i$}, joint] at (3, -5.5) {};
+    \node (tcp) [label={[label distance=0.2]-90:$P$}, joint] at (1, -5.5) {};
+    
+    
+    \draw [blue, fill=blue] (0, 0) circle (0.075);
+    \draw [blue, fill=blue] (3, 0) circle (0.075);
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % KINEMATIC CHAIN
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+    \draw [thick] (revolute-joint) -- (upper-spherical-bearing)
+        node [near end, label={[label distance=0.1]10:$a$}] {};
+        
+    \draw [thick] (upper-spherical-bearing) -- (lower-spherical-bearing)
+        node[near end, label={[label distance=0.1]0:$b$}] {};
+        
+    \draw [thick] (lower-spherical-bearing) -- (tcp)
+        node[midway, label={[label distance=0.2]-90:$r$}] {};
+        
+    \draw [thick] (tcp) -- (y_o)
+        node[midway, label={[label distance=0.2]180:$p$}] {};
+        
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % ANGLE THETA 1
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw [dashdotted] (3.1, 0) coordinate (revolute-joint) 
+    -- (4.5, 0) coordinate (x_i);
+    
+    \draw 
+    (4.4, -2) coordinate (upper-spherical-bearing)
+    
+    pic["$\theta\textsubscript{1i}$", draw = black, <->, angle eccentricity = 1.2, angle radius = 1.2cm]
+    {angle=upper-spherical-bearing--revolute-joint--x_i};
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % ANGLE THETA 2
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw [dashdotted] 
+    (4.5, -2) coordinate (b) -- (6, -2) coordinate (c)
+    (4.5, -2) -- (5.6, -3.1) coordinate (a);
+    
+    \draw
+    pic["$\theta\textsubscript{1i}$", draw = black, <->, angle eccentricity = 1.2, angle radius = 1.2cm]
+    {angle=a--b--c}
+    
+    (4.5, -2) -- (3, -5.5) coordinate (d)
+    
+    pic["$\theta\textsubscript{2i}$", draw = black, <->, angle eccentricity = 1.2, angle radius = 1.2cm]
+    {angle=d--b--a};
+    
+    
+    
+    
+
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % SIDE VIEW
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % COORDINATE SYSTEM (ROTARY JOINT)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node (origin) at (9.5, 0) {};
+    \node (y_i) [label={[blue, shift={(-0.25, 0)}]$y_i$}] at (6.8, 0) {};
+    \node at (11.5, 0) {//};
+    \node (z_i) [label={[red, shift={(-0.25, -.5)}]$z_i$}] at (9.5, -1.2) {};
+    
+    \draw [blue, dashdotted] (12, 0) to (origin.center);
+    \draw [->, blue, ultra thick] (origin.center) to (y_i);
+    \draw [->, red, ultra thick] (origin.center) to (z_i);
+    
+    \draw [white, fill=white] (9.5, 0) circle (0.17);
+    
+    \node (x_i) [label={[green, shift={(-0.25, 0)}]$x_i$}, draw, green, circle, thick] at (9.5, 0) {};
+    
+    \draw [green, fill=green] (9.5, 0) circle (0.075);
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DEFINE NODES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node (upper-spherical-bearing-left) [joint] at (8.5, -2) {};
+    \node (upper-spherical-bearing-right) [joint] at (10.5, -2) {};
+
+    \node (lower-spherical-bearing-left) [joint] at (9.5, -5.5) {};
+    \node (lower-spherical-bearing-right) [joint] at (11.5, -5.5) {};
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % KINEMATIC CHAIN
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw [thick] (9, -.25) rectangle (10, .25);
+    \node at (9.75, .5) {$F_i$};
+    
+    \node (A_i) at (9.5, -.25) {};
+    
+    \draw [thick] (upper-spherical-bearing-left) -- (upper-spherical-bearing-right) 
+        node (B_i) [midway, label={[label distance=0.2]60:$J_i$}] {};
+        
+    \draw [thick] (lower-spherical-bearing-left) -- (lower-spherical-bearing-right) 
+        node [midway, label={[label distance=0.2]-90:$E_i$}] {};
+        
+    \draw [thick] (upper-spherical-bearing-left) -- (lower-spherical-bearing-left) 
+        node [midway, label={[label distance=0.2]-180:$b$}] {};
+    
+    \draw [thick] (upper-spherical-bearing-right) -- (lower-spherical-bearing-right) 
+        node [midway, label={[label distance=0.2]0:$b$}] {};
+    
+    \draw [thick] (A_i.center) -- (B_i.center);
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % ANGLE THETA 3
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw [dashdotted] (7, -2) coordinate (B_i) 
+    -- (12, -2)
+        node [very near end] {//};
+    
+    \draw 
+    (8.5, -2) coordinate (upper-spherical-bearing-left)
+    (9.5, -5.5) coordinate (lower-spherical-bearing-left)
+    
+    pic["$\theta\textsubscript{3i}$", draw = black, <->, angle eccentricity = 1.2, angle radius = 1.2cm]
+    {angle=B_i--upper-spherical-bearing-left--lower-spherical-bearing-left};
+    
+    
+\end{tikzpicture}

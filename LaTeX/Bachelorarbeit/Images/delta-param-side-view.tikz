@@ -1,0 +1,62 @@
+% --------------------------------------------------
+% filename: delta_param_side-view.tikz
+% caption:  Projektion des Roboters auf die von von $y_0$ und $z_0$ aufgespannte Ebene zur Ermittlung des Schnittpunkt $J_1$
+% label:    fig:delta_param_side-view
+% date:     15.05.2019
+% --------------------------------------------------
+
+\begin{tikzpicture}[cross/.style={path picture={ 
+        \draw
+        (path picture bounding box.south east) -- (path picture bounding box.north west) (path picture bounding box.south west) -- (path picture bounding box.north east);}}
+    ]
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DEFINE STYLES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \tikzstyle{joint} = [circle, scale=0.8, fill=black, draw, thick]
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DEFINE NODES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node (origin) at (0, 0) {};
+    \node (revolute-joint) [label={[label distance=0.2]60:$F_1$}, joint] at (2.5, 0) {};
+    \node (upper-spherical-bearing) [label={[label distance=1]5:$J_1$}, joint] at (4, -1) {};
+    \node (lower-spherical-bearing) [label={[label distance=0.2]-90:$E_1'$}, joint] at (3, -3.5) {};
+    \node (tcp) [label={[label distance=0.2]-90:$P$}, joint] at (1.5, -3.5) {};
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % COORDINATE SYSTEM (ORIGIN)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node (y_o) [label={[blue, shift={(0, 0)}]$y_o$}] at (-1.2, 0) {};
+    \node (z_o) [label={[red, shift={(-0.35, -0.25)}]$z_o$}] at (0, 1.2) {};
+    \node (x_o) [label={[green, shift={(-0.35, 0)}]$x_o$}, draw, green, circle, cross, thick] at (0, 0) {};
+    
+    \draw [->, blue, ultra thick] (5, 0) to (y_o);
+    \draw [->, red, ultra thick] (0, -5) to (z_o);
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % KINEMATIC CHAIN
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw [thick] (y_o) -- (revolute-joint); 
+    \draw [thick] (revolute-joint) -- (upper-spherical-bearing)
+        node [near end, label={[label distance=0.1]$a$}] {};
+    \draw [thick] (upper-spherical-bearing) -- (lower-spherical-bearing)
+        node[near end, label={[label distance=0.1]0:$v$}] {};
+    \draw [thick] (lower-spherical-bearing) -- (tcp)
+        node[midway, label={[label distance=0.2]-90:$r$}] {};
+        
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % CIRCLES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+    \draw [thick, dotted] (revolute-joint) circle (1.8028)
+        node (K) at (3.75, .75) {$K$};
+     
+    \draw [thick, dashed] (lower-spherical-bearing) circle (2.6926)    
+        node (k) at (5, -2.25) {$k$};
+    
+\end{tikzpicture}

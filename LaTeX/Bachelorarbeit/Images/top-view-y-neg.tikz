@@ -1,0 +1,189 @@
+
+% --------------------------------------------------
+% filename: top-view.tikz
+% caption:  Draufsicht der invarianten Basis und beweglichen Plattform des Roboters
+% label:    fig:top-view
+% date:     14.04.2019
+% --------------------------------------------------
+
+\begin{tikzpicture}[cross/.style={path picture={ 
+        \draw
+        (path picture bounding box.south east) -- (path picture bounding box.north west) (path picture bounding box.south west) -- (path picture bounding box.north east);}}
+    ]
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % TOP VIEW BASE
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DEFINE STYLES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \tikzstyle{joint} = [circle, scale=0.8, fill=black, draw, thick]
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % EOORDINATE SYSTEM (ORIGIN)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node (y_o) [label={[blue, shift={(0, -.1)}]$y_o$}] at (-1.2, 0) {};
+    \node (x_o) [label={[green, shift={(-.25, -.4)}]$x_o$}] at (0, 1.2) {};
+    \node (z_o) [label={[red, shift={(.45, -.65)}]$z_o$}, draw, red, circle, thick] at (0, 0) {};
+    
+    \draw [->, green, ultra thick] (z_o) to (x_o);
+    \draw [->, blue, ultra thick] (z_o) to (y_o);
+    
+    \draw [red, fill=red] (0, 0) circle (0.075);
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DEFINE NODES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node (origin) [label={[label distance=0.2]-90:$O$}] at (0, 0) {};
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DRAW
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % \draw [thick, dashdotted] (0, 4.619) -- (4, -2.309); 
+    % \draw [draw=none] (0, 4.619) -- (4, -2.309) node (F1) [midway, joint, label={[label distance=0.2]60:$F_1$}] {};
+    
+    % \draw [thick, dashdotted] (4, -2.309) -- (-4, -2.309);  
+    % \draw [draw=none] (4, -2.309) -- (-4, -2.309) node (F2) [midway, joint, label={[label distance=0.2]-90:$F_2$}] {};
+    
+    % \draw [thick, dashdotted] (-4, -2.309) -- (0, 4.619); 
+    % \draw [draw=none] (-4, -2.309) -- (0, 4.619) node (F3) [midway, joint, label={[label distance=0.2]135:$F_3$}] {};
+    
+    \draw [thick, dashdotted] (origin) circle (2.309);
+    
+    \draw [thick]  
+    (2.3096, 4) -- (2.3096, -4) 
+    node (F1) [midway, joint, label={[label distance=0.2]60:$F_1$}] {}
+    node (x1) [label={[green, shift={(0.25, 0)}]$x_1$}] at (3.5096, 0) {}
+    node (y1) [label={[blue, shift={(0.35, -0.5)}]$y_1$}] at (2.3096, -1.2) {}
+    node (z1) [label={[red, shift={(-0.35, -0.7)}]$z_1$}, draw, red, circle, cross, thick] at (2.3096, 0) {};
+    
+    \draw [->, green, ultra thick] (z1) to (x1);
+    \draw [->, blue, ultra thick] (z1) to (y1);
+    
+    % \draw [red, fill=red] (2.3096, 0) circle (0.075);
+    % node (y1) [label={[blue, shift={(0.35, 0)}]$y_1$}] at (1.1096, 0) {}
+    % node (x1) [label={[green, shift={(0.35, -0.5)}]$x_1$}] at (2.3096, 1.2) {}
+    % node (z1) [label={[red, shift={(-0.35, -0.7)}]$z_1$}, draw, red, circle, thick] at (2.3096, 0) {};
+    
+    % \draw [->, green, ultra thick] (z1) to (x1);
+    % \draw [->, blue, ultra thick] (z1) to (y1);
+    
+    % \draw [red, fill=red] (2.3096, 0) circle (0.075);
+    
+    
+    \draw [thick] 
+    (-4.6186, 0) -- (2.3096, 4)
+    node (F2) [midway, joint, label={[label distance=0.2]175:$F_2$}] {}
+    node (x2) [label={[green, shift={(-0.35, -0.3)}]$x_2$}] at (-1.7548, 3.0394) {}
+    node (y2) [label={[blue, shift={(0, 0)}]$y_2$}] at (-0.11557, 2.6) {}
+    node (z2) [label={[red, shift={(-0.1, -0.85)}]$z_2$}, draw, red, circle, cross, thick] at (-1.1548, 2) {};
+    
+    \draw [->, green, ultra thick] (z2) to (x2);
+    \draw [->, blue, ultra thick] (z2) to (y2);
+    
+    % \draw [red, fill=red] (-1.1548, 2) circle (0.075);
+    % node (y2) [label={[blue, shift={(-0.35, -0.3)}]$y_2$}] at (-.5548, .9609) {}
+    % node (x2) [label={[green, shift={(0, 0)}]$x_2$}] at (-2.194, 1.4002) {}
+    % node (z2) [label={[red, shift={(-0.1, -0.85)}]$z_2$}, draw, red, circle, thick] at (-1.1548, 2) {};
+    
+    % \draw [->, green, ultra thick] (z2) to (x2);
+    % \draw [->, blue, ultra thick] (z2) to (y2);
+    
+    % \draw [red, fill=red] (-1.1548, 2) circle (0.075);
+    
+    
+    \draw [thick] 
+    (2.3096, -4) -- (-4.6186, 0)
+    node (F3) [midway, joint, label={[label distance=0.2]-88:$F_3$}] {}
+    node (x3) [label={[green, shift={(0.4, -0.6)}]$x_3$}] at (-1.7548, -3.0394) {}
+    node (y3) [label={[blue, shift={(-0.3, -0.55)}]$y_3$}] at (-2.194, -1.4) {}
+    node (z3) [label={[red, shift={(0.5, -0.3)}]$z_3$}, draw, red, circle, cross, thick] at (-1.1548, -2) {};
+    
+    \draw [->, green, ultra thick] (z3) to (x3);
+    \draw [->, blue, ultra thick] (z3) to (y3);
+    
+    % \draw [red, fill=red] (-1.1548, -2) circle (0.075);
+    % node (y3) [label={[blue, shift={(0.4, -0.6)}]$y_3$}] at (-.5548, -.9609) {}
+    % node (x3) [label={[green, shift={(-0.3, -0.55)}]$x_3$}] at (-.1156, -2.6002) {}
+    % node (z3) [label={[red, shift={(0.5, -0.3)}]$z_3$}, draw, red, circle, thick] at (-1.1548, -2) {};
+    
+    % \draw [->, green, ultra thick] (z3) to (x3);
+    % \draw [->, blue, ultra thick] (z3) to (y3);
+    
+    % \draw [red, fill=red] (-1.1548, -2) circle (0.075);
+    
+
+    \draw [thick, dashdotted] 
+    (origin.center) -- (F1)
+    (origin.center) -- (F2)
+    (origin.center) -- (F3)
+        node [near end, label={[label distance=0.2]0:$R$}] {};
+   
+   
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % ANGLES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw 
+    (0, 0) coordinate (z_o)
+    (1, 0) coordinate (F_1)
+    (-0.5, 0.866) coordinate (a_2)
+    (-0.5, -0.866) coordinate (a_3)
+    
+    pic[draw = black, <->, angle eccentricity = 0.6, angle radius = 1.35cm]
+    {angle=F_1--z_o--a_2}
+    node [label={[label distance=0.2]0:$\alpha_2$}] at (.5, .4) {}
+    
+    pic[draw = black, <->, angle eccentricity = 1.2, angle radius = 1.5cm]
+    {angle=F_1--z_o--a_3}
+    node [label={[label distance=0.2]0:$\alpha_3$}] at (-1.6, -.8) {};
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % TOP VIEW PLATFORM
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % COORDINATE SYSTEM (TCP)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % \node (y_p) [label={[blue, shift={(-0.2, -0.1)}]$y_p$}] at (6.3, 0) {};
+    % \node (x_p) [label={[green, shift={(-.25, -.4)}]$x_p$}] at (7.5, 1.2) {};
+    % \node (z_p) [label={[red, shift={(-0.25, -0.1)}]$z_p$}, draw, red, circle, thick] at (7.5, 0) {};
+    
+    % \draw [->, green, ultra thick] (z_p) to (x_p);
+    % \draw [->, blue, ultra thick] (z_p) to (y_p);
+    
+    % \draw [red, fill=red] (7.5, 0) circle (0.075);
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DEFINE NODES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node (tcp) [joint, label={[label distance=0.2]0:$P$}] at (7.5, 0) {};
+    % \node (E1) [label={[label distance=0.2]-90:$E1$}, joint] at (7.5, -2.309) {};
+    % \node (E2) [label={[label distance=0.2]45:$E2$}, joint] at (9.5, 1.155) {};
+    % \node (E3) [label={[label distance=0.2]135:$E3$}, joint] at (5.5, 1.155) {};
+    
+    \draw [draw=none] 
+    (9.8096, 4) -- (9.8096, -4) 
+    node (E1) [midway, joint, label={[label distance=0.2]60:$E_1$}] {}
+    (2.8814, 0) -- (9.8096, 4) 
+    node (E2) [midway, joint, label={[label distance=0.2]175:$E_2$}] {} 
+    (9.8096, -4) -- (2.8814, 0) 
+    node (E3) [midway, joint, label={[label distance=0.2]-88:$E_3$}] {};
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DRAW
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw [thick] (E1) -- (E2) -- (E3) -- (E1) node (P) [midway] {};
+    
+    \draw [thick, dashdotted] 
+    (tcp) circle (2.309)
+    (tcp.center) -- (E3)
+        node [midway, label={[label distance=0.2]90:$r$}] {};
+    
+    
+\end{tikzpicture}
